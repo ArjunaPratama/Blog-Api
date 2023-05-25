@@ -15,6 +15,9 @@ public interface BlogRepository extends JpaRepository<blog, Integer> {
     @Query(value = "select * from mst_blog", nativeQuery = true)
     List<blog> findAllBlog();
 
+    @Query(value = "select * from mst_blog where id = :id", nativeQuery = true)
+    List<blog> findBlogbyId(@Param("id") Integer id);
+
     @Modifying
     @Query(value = "INSERT INTO mst_blog (id, title, body, author) values (:id,:title,:body,:author)", nativeQuery = true)
     void insertBlog(@Param("id")  Integer id, @Param("title") String title, @Param("body") String body, @Param("author") String author);

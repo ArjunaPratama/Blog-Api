@@ -21,6 +21,10 @@ public class BlogService {
         return (List<blog>) blogRepository.findAllBlog();
     }
 
+    public List<blog> blogListById(blog mdlBlog){
+        return (List<blog>) blogRepository.findBlogbyId(mdlBlog.getId());
+    }
+
     public void save(blog Blog) {
         blogRepository.insertBlog(Blog.getId(), Blog.getTitle(), Blog.getBody(), Blog.getAuthor());
         System.out.println(Blog.getId());
