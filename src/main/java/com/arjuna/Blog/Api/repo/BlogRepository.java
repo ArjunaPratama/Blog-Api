@@ -1,6 +1,6 @@
 package com.arjuna.Blog.Api.repo;
 
-import com.arjuna.Blog.Api.model.blog;
+import com.arjuna.Blog.Api.model.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -10,17 +10,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BlogRepository extends JpaRepository<blog, Integer> {
+public interface BlogRepository extends JpaRepository<Blog, Integer> {
 
     @Query(value = "select * from mst_blog", nativeQuery = true)
-    List<blog> findAllBlog();
+    List<Blog> findAllBlog();
 
     @Query(value = "select * from mst_blog where id = :id", nativeQuery = true)
-    List<blog> findBlogbyId(@Param("id") Integer id);
+    List<Blog> findBlogbyId(@Param("id") Integer id);
 
     @Modifying
     @Query(value = "INSERT INTO mst_blog (id, title, body, author) values (:id,:title,:body,:author)", nativeQuery = true)
-    void insertBlog(@Param("id")  Integer id, @Param("title") String title, @Param("body") String body, @Param("author") String author);
+    int insertBlog(@Param("id")  Integer id, @Param("title") String title, @Param("body") String body, @Param("author") String author);
 
     @Modifying
     @Query(value = "Update mst_blog  set title = :title, body = :body, author = :author where id = :id", nativeQuery = true)

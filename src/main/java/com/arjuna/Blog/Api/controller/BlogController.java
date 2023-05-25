@@ -1,7 +1,7 @@
 package com.arjuna.Blog.Api.controller;
 
 
-import com.arjuna.Blog.Api.model.blog;
+import com.arjuna.Blog.Api.model.Blog;
 import com.arjuna.Blog.Api.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,30 +19,30 @@ public class BlogController {
 
     @PostMapping("/getblog")
     public ResponseEntity<Object> getallbloglist(){
-        List<blog> bloglist =  blogService.blogList();
+        List<Blog> bloglist =  blogService.blogList();
         return new ResponseEntity<Object>(bloglist,HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public blog saveBlog(@RequestBody blog Blog) {
+    public Blog saveBlog(@RequestBody Blog Blog) {
         blogService.save(Blog);
         return Blog;
     }
 
     @PostMapping("/update")
-    public void updateBlog(@RequestBody blog Blog) {
+    public void updateBlog(@RequestBody Blog Blog) {
         blogService.update(Blog);
     }
 
     @PostMapping("/delete")
-    public void deleteblog(@RequestBody blog Blog) {
+    public void deleteblog(@RequestBody Blog Blog) {
         blogService.delete(Blog);
     }
 
 
     @PostMapping("/getblog-by-id")
-    public List<blog> getblogbyid(@RequestBody blog Blog){
-        List<blog> bloglist;
+    public List<Blog> getblogbyid(@RequestBody Blog Blog){
+        List<com.arjuna.Blog.Api.model.Blog> bloglist;
         bloglist  = blogService.blogListById(Blog);
         return bloglist;
     }
