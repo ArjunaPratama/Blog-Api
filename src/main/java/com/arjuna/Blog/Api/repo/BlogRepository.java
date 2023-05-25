@@ -22,4 +22,8 @@ public interface BlogRepository extends JpaRepository<blog, Integer> {
     @Modifying
     @Query(value = "Update mst_blog  set title = :title, body = :body, author = :author where id = :id", nativeQuery = true)
     void updateBlog(@Param("id")  Integer id, @Param("title") String title, @Param("body") String body, @Param("author") String author);
+
+    @Modifying
+    @Query(value = "Delete FROM mst_blog where id = :id", nativeQuery = true)
+    void deleteBlog(@Param("id")  Integer id);
 }

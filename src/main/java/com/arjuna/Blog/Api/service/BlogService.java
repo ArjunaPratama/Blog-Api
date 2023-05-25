@@ -29,4 +29,8 @@ public class BlogService {
     public void update(blog Blog){
         blogRepository.updateBlog(Blog.getId(), Blog.getTitle(), Blog.getBody(), Blog.getAuthor());
     }
+
+    public void delete(blog Blog){
+        blogRepository.deleteBlog(Blog.getId());
+    }
 }

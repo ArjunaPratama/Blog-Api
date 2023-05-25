@@ -32,6 +32,11 @@ public class BlogController {
         blogService.update(Blog);
     }
 
+    @PostMapping("/delete")
+    public void deleteblog(@RequestBody blog Blog) {
+        blogService.delete(Blog);
+    }
+
 
 
 
