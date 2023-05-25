@@ -4,8 +4,8 @@ package com.arjuna.Blog.Api.controller;
 import com.arjuna.Blog.Api.model.blog;
 import com.arjuna.Blog.Api.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,10 +18,9 @@ public class BlogController {
     private BlogService blogService;
 
     @PostMapping("/getblog")
-    public List<blog> getallbloglist(){
-        List<blog> bloglist;
-        bloglist  = blogService.blogList();
-        return bloglist;
+    public ResponseEntity<Object> getallbloglist(){
+        List<blog> bloglist =  blogService.blogList();
+        return new ResponseEntity<Object>(bloglist,HttpStatus.OK);
     }
 
     @PostMapping("/save")
